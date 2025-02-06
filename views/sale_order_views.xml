@@ -1,13 +1,14 @@
 <odoo>
     <data>
 
-        <!-- Heredar la vista formulario para eliminar el botón "Duplicar" -->
+        <!-- Heredar la vista formulario para eliminar el botón "Duplicar" si existe -->
         <record id="view_order_form_inherit_no_duplicate" model="ir.ui.view">
             <field name="name">sale.order.form.inherit.no_duplicate</field>
             <field name="model">sale.order</field>
             <field name="inherit_id" ref="sale.view_order_form"/>
             <field name="arch" type="xml">
-                <xpath expr="//header/button[@name='action_duplicate']" position="attributes">
+                <!-- Solo eliminamos el botón si realmente existe en la vista original -->
+                <xpath expr="//header/button[@name='action_duplicate']" position="attributes" if-exists="True">
                     <attribute name="groups">sales_team.group_sale_salesman,sales_team.group_sale_manager</attribute>
                 </xpath>
             </field>
