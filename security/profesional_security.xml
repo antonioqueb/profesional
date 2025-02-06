@@ -3,7 +3,6 @@
         <!-- Grupo personalizado -->
         <record id="group_limited_sales_users" model="res.groups">
             <field name="name">Usuarios Ventas Limitados</field>
-            <field name="category_id" ref="sales_team.module_category_sales"/>
             <field name="implied_ids" eval="[(3, ref('sales_team.group_sale_salesman'))]"/>
         </record>
 
